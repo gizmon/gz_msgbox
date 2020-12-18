@@ -39,4 +39,4 @@
 
 
 
-[GizmoLabs Wiki] (https://wiki.gz-labs.net/index.php/Textlayer)
+[GizmoLabs Wiki] (https://wiki.gz-labs.net/)
