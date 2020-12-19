@@ -1,5 +1,6 @@
-# gz_msgbox - GizmoLabs による AutoCAD や AutoLISPが利用可能な 互換 CAD 用の各種のメッセージボックス関数
-## ファイル：gz_msgbox.lsp gz_msgbox.dcl
+# gz_msgbox
+## GizmoLabs による AutoCAD や AutoLISPが利用可能な 互換 CAD 用の各種のメッセージボックス関数
+### ファイル：gz_msgbox.lsp gz_msgbox.dcl
 
 ## ダイアログの種類と対応する関数
 
