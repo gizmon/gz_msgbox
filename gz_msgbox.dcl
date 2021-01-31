@@ -413,6 +413,71 @@ lspInputBox2 : dialog {
 }
 
 //////////////////////////////////////////////////////////////////////
+lspInputBox3 : dialog {
+  key = "main";
+  initial_focus = "textbox";
+  : row {
+	  : column {
+		 width = 47;
+		: spacer { width = 1; }
+		: text {
+			key = "message1";
+			width = 20;
+		}
+		: text {
+			key = "message2";
+			width = 20;
+		}
+		: text {
+			key = "message3";
+			width = 20;
+		}
+		: text {
+			key = "message4";
+			width = 20;
+		}
+		: spacer { width = 1; }
+		: toggle {
+			key = "chk1";
+			label = "カウントアップで連続指示する";
+	    }
+		: spacer { width = 1; }
+	  }
+	}
+	: spacer { width = 1; }
+  : edit_box { 
+		edit_width = 60; 
+		label = " ";
+		key = "textbox";
+		allow_accept = true;
+  }
+  : row {
+	: button {
+		  key = "accept";
+		  label = "OK";
+		  width = 3;
+		  mnemonic = "O";
+		  is_default = true;
+	}
+	: button {
+		  label = "キャンセル (C)";
+		  key = "cancel";
+		  width = 3;
+		  mnemonic = "C";
+		  is_cancel = true;
+	}
+  }
+  // ij2020 bug avoidance
+  : column { 
+    : text { 
+     key = "bug_avoidance";
+     width = 66;
+    }
+  }
+  // ij2020 bug avoidance
+}
+
+//////////////////////////////////////////////////////////////////////
 lspCombobox : dialog {
   key = "main";
   initial_focus = "poplist";

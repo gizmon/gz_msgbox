@@ -1,8 +1,8 @@
-;;; 各種のメッセージボックス関数
+;;; gz_msgbox 各種のメッセージボックス関数
 ;;; 関連ファイル：gz_msgbox.dcl
 
 ; バージョン
-(defun gz_msgbox_ver () (princ "\nGZ_MsgBox --- ver1.5 (MIT License)"))
+(defun gz_msgbox_ver () (princ "\nGZ_MsgBox --- ver1.6 (MIT License)"))
 
 ;;; ------------------------------------------------------------------
 ;;; ダイアログの種類      --- 対応する関数
@@ -21,6 +21,7 @@
 ;;; [パスワード入力]      --- gz:lspGetPass
 ;;; [Inputbox]            --- gz:lspInputBox  (ボタンが横にあるタイプ)
 ;;;                       --- gz:lspInputBox2 (ボタンが下にあるタイプ)
+;;;                       --- gz:lspInputBox3 (ボタンが下+チェック欄が一つあるタイプ)
 ;;; [Combobox]            --- gz:lspComboBox
 ;;; [Listbox]             --- gz:lspListBox
 ;;; [Listbox]             --- gz:lspListBoxMlti (複数選択可)
@@ -41,7 +42,7 @@
 ;;; 
 ;;; ------------------------------------------------------------------
 ; ライセンス（MIT License）
-; Copyright (c) 2020 Hiroki Sugihara
+; Copyright (c) 2021 - Hiroki Sugihara
 ; 
 ; 以下に定める条件に従い、本ソフトウェアおよび関連文書のファイル
 ; （以下「ソフトウェア」）の複製を取得するすべての人に対し、ソフトウェアを
@@ -62,9 +63,9 @@
 ;;; ------------------------------------------------------------------
 
 (defun msgchk (m /)
-; メッセージの文字列チェック。
+; メッセージの文字列チェックとリスト化。
 ; 単純な文字列だったらリスト化する。
-; 文字列リストは、4個まで空文字追加。
+; 文字列リストは、5個まで空文字追加。
   (if (and (/= 'STR  (type m)) (/= 'LIST (type m)))
     (setq m '("not strings")))
   (if (= 'STR (type m)) (setq m (list m)))
@@ -233,6 +234,43 @@ result)
     (unload_dialog dcl_id)
   )
 result)
+
+(defun gz:lspInputBox3 (main msg1 def chk / dcl_id result ret_chk)
+; 引数 chk
+; ex. (gz:lspInputBox3 "なんか入力して" "インプットボックス" "初期値" "1")
+; 戻り値 : テキストボックスの文字列とチェック項目のON/OFF のリスト or nil
+; -> ("テキストボックスの文字列" "1")
+  (setq msg1    (msgchk msg1)
+        result  "" 
+        ret_chk "")
+  (if (or (= "1" chk) (= 1 chk)) ; チェックボックスの引数チェック
+   (setq ret_chk "1")
+   (setq ret_chk "0")
+  )
+  (while (= "" result)
+    (setq dcl_id (load_dialog "gz_msgbox.dcl"))
+    (if (not (new_dialog "lspInputBox3" dcl_id))    (exit)  )
+    (set_tile "message1" (car msg1))
+    (set_tile "message2" (cadr msg1))
+    (set_tile "message3" (caddr msg1))
+    (set_tile "message4" (nth 3 msg1))
+    (set_tile "chk1"     ret_chk)
+    (set_tile "textbox"  def)
+    (set_tile "main"     main)
+    (action_tile "chk1"    "(setq ret_chk $value)")
+    (action_tile "textbox" "(setq result $value)") 
+    (action_tile "cancel"  "(done_dialog) (setq result nil)")
+    (action_tile "accept"  "(done_dialog)")
+    (start_dialog)
+    (unload_dialog dcl_id)
+  )
+
+; 返り値
+(if result 
+  (list result ret_chk)
+  nil)
+)
+
 
 (defun gz:lspComboBox (main msg1 lst / result dcl_id)
 ; ex. (gz:lspComboBox "xxxxなんで選んで" "コンボボックス" '("aaa" "AA" "あああ" "ぁぁぁ" "1234567890"))
@@ -431,13 +469,13 @@ result)
   (if (= nil result) (prompt "\nキャンセル") (progn (apply 'strcat result)))
   (setq result (gz:lspbrowsefolder "○○のフォルダを選択" nil))
   (alert (if (= nil result) "キャンセル" result))
-  (setq result (GZ:popup "ポップアップメッセージ" "OK ボタン" (+ 0 48 4096)))
+  (setq result (GZ:popup "ポップアップメッセージ" "OK ボタン" (+ 0 16 4096)))
   (alert (if (= nil result) "キャンセル" (itoa result)))
-  (setq result (GZ:popup "ポップアップメッセージ" "OK、キャセル ボタン" (+ 1 48 4096)))
+  (setq result (GZ:popup "ポップアップメッセージ" "OK、キャセル ボタン" (+ 1 32 4096)))
   (alert (if (= nil result) "キャンセル" (itoa result)))
   (setq result (GZ:popup "ポップアップメッセージ" "中止、再実行、無視 ボタン" (+ 2 48 4096)))
   (alert (if (= nil result) "キャンセル" (itoa result)))
-  (setq result (GZ:popup "ポップアップメッセージ" "はい、いいえ、キャンセル ボタン" (+ 3 48 4096)))
+  (setq result (GZ:popup "ポップアップメッセージ" "はい、いいえ、キャンセル ボタン" (+ 3 64 4096)))
   (alert (if (= nil result) "キャンセル" (itoa result)))
   (setq result (GZ:popup "ポップアップメッセージ" "はい、いいえ ボタン" (+ 4 48 4096)))
   (alert (if (= nil result) "キャンセル" (itoa result)))
