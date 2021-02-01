@@ -21,6 +21,7 @@
 - [パスワード入力]      --- gz:lspGetPass
 - [Inputbox]            --- gz:lspInputBox  (ボタンが横にあるタイプ)
 -                       --- gz:lspInputBox2 (ボタンが下にあるタイプ)
+-                       --- gz:lspInputBox3 (ボタンが下でチェックボックスがあるタイプ)
 - [Combobox]            --- gz:lspComboBox
 - [Listbox]             --- gz:lspListBox
 - [Listbox]             --- gz:lspListBoxMlti (複数選択可)
