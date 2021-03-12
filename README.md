@@ -2,6 +2,17 @@
 ## GizmoLabs による AutoCAD や AutoLISPが利用可能な 互換 CAD 用の各種のメッセージボックス関数
 ### ファイル：gz_msgbox.lsp gz_msgbox.dcl
 
+
+##
+確認済み動作環境
+・ AutoCAD 
+・ BricsCAD Classic/Lite 以上
+・ GstarCAD 
+・ IJCAD STD 以上
+・ IntelliCAD （一部）
+・ AresCAD系 （AresCAD、Draftsight,CorelCAD）
+
+
 ## ダイアログの種類と対応する関数
 
 ------------------------------------------------------------------
