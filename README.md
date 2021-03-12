@@ -5,12 +5,12 @@
 
 ##
 確認済み動作環境
-・ AutoCAD 
-・ BricsCAD Classic/Lite 以上
-・ GstarCAD 
-・ IJCAD STD 以上
-・ IntelliCAD （一部）
-・ AresCAD系 （AresCAD、Draftsight,CorelCAD）
+- AutoCAD 
+- BricsCAD Classic/Lite 以上
+- GstarCAD 
+- IJCAD STD 以上
+- IntelliCAD （一部）
+- AresCAD系 （AresCAD、Draftsight,CorelCAD）
 
 
 ## ダイアログの種類と対応する関数
