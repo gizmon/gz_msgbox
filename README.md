@@ -9,7 +9,7 @@
 - BricsCAD Classic/Lite 以上
 - GstarCAD 
 - IJCAD STD 以上
-- IntelliCAD （一部）
+- IntelliCAD （LISPが読み込み出来るグレード）
 - AresCAD系 （AresCAD、Draftsight,CorelCAD）
 
 
