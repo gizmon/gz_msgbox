@@ -1,16 +1,16 @@
 # gz_msgbox
 ## GizmoLabs による AutoCAD や AutoLISPが利用可能な 互換 CAD 用の各種のメッセージボックス関数
-### ファイル：gz_msgbox.lsp gz_msgbox.dcl
+### ファイル：gz_msgbox.lsp, gz_msgbox.dcl
 
 
 ##
-確認済み動作環境
-- AutoCAD 
-- BricsCAD Classic/Lite 以上
-- GstarCAD 
-- IJCAD STD 以上
-- IntelliCAD （LISPが読み込み出来るグレード）
-- AresCAD系 （AresCAD、Draftsight,CorelCAD）
+確認済み動作環境 (すべてLISPが読み込み出来るグレードが対象 )
+- AutoCAD
+- BricsCAD
+- GstarCAD
+- IJCAD
+- IntelliCAD系
+- AresCAD系 （AresCAD, Draftsight, CorelCAD）
 
 
 ## ダイアログの種類と対応する関数
@@ -24,10 +24,8 @@
 - [Yes]-[No]-[Cancel]   --- gz:lspYesNoCancel
 - [OK]-[Cancel]         --- gz:lspRetryCancel
 
-- 戻り値 OK=T、キャンセル=nil、No="F"
+- 戻り値： OK=T、キャンセル=nil、No="F"
 
-------------------------------------------------------------------
-ダイアログの種類      --- 対応する関数
 ------------------------------------------------------------------
 - [パスワード入力]      --- gz:lspGetPass
 - [Inputbox]            --- gz:lspInputBox  (ボタンが横にあるタイプ)
@@ -37,18 +35,16 @@
 - [Listbox]             --- gz:lspListBox
 - [Listbox]             --- gz:lspListBoxMlti (複数選択可)
 
-- 戻り値 OK=文字列、キャンセル=nil
+- 戻り値： OK=文字列、キャンセル=nil
 
-------------------------------------------------------------------
-ダイアログの種類      --- 対応する関数
 ------------------------------------------------------------------
 - [フォルダ選択]        --- gz:lspbrowsefolder
 
-- 戻り値 フォルダ名の文字列
+- 戻り値： フォルダ名の文字列
 ------------------------------------------------------------------
 - [popup] WSH の popup メソッドを使ったMSGボックス --- gz:popup
 
-- 戻り値 OK=1,キャンセル=2, 中止=3, 再試行=4, 無視=5,  はい=6, いいえ=7, 再実行=10, 続行=11
+- 戻り値： OK=1,キャンセル=2, 中止=3, 再試行=4, 無視=5,  はい=6, いいえ=7, 再実行=10, 続行=11
 
 
 
