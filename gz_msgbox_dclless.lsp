@@ -448,7 +448,7 @@ result)
 ;;; 10  Try Again（再実行） ボタンがクリックされた。
 ;;; 11  Continue（続行） ボタンがクリックされた。
 ;;;
-;;; メモ : IJCAD だと呼び出しが正常ではないのかアイコンなし OKボタンのみの動作になる。2013～2020
+;;; メモ : IJCAD だと呼び出しが正常ではないのかアイコンなし OKボタンのみの動作になる。2013～2022
   (if (setq wsh (vlax-create-object "wscript.shell"))
     (progn
       (setq rtn (vl-catch-all-apply 'vlax-invoke-method (list wsh 'popup msg 0 title bit)))
@@ -587,6 +587,21 @@ result)
     "}"
     ": column {: text {key = \"bug_avoidance\"; width = 66;}}"
     "}"
+  )
+  (strcat
+    "LspEd : dialog {key = \"contents\"; label = \"文字の編集\"; initial_focus = \"contents\";"
+    ": edit_box {label = \"内容:\"; edit_width = 40;  edit_limit = 256; allow_accept = true; }"
+    "spacer;"
+    ": column {"
+    ": row {fixed_width = true; alignment = centered;"
+    "ok_button;"
+    ": spacer { width = 2; }"
+    "cancel_button;"
+    ": spacer { width = 2; }"
+    "}"
+    "}"
+    ": column {: text {key = \"bug_avoidance\"; width = 60;}}"
+    "}
   )
   (strcat
     "lspCombobox : dialog {key = \"main\";  initial_focus = \"poplist\";"
