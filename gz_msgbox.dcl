@@ -1,6 +1,6 @@
 dcl_settings : default_dcl_settings { audit_level = 3; }
 //////////////////////////////////////////////////////////////////////
-// ƒƒbƒZ[ƒWƒ{ƒbƒNƒX•\¦ LISPŠÖ”—pƒ_ƒCƒAƒƒO
+// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹è¡¨ç¤º LISPé–¢æ•°ç”¨ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 // using : gz_msgbox.lsp
 //////////////////////////////////////////////////////////////////////
 lspOkCancel : dialog {
@@ -33,7 +33,7 @@ lspOkCancel : dialog {
 	}
     : spacer { width = 1; }
 	: button {
-	  label = "ƒLƒƒƒ“ƒZƒ‹ (C)";
+	  label = "ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)";
 	  key = "cancel";
 	  width = 12;
 	  fixed_width = true;
@@ -66,7 +66,7 @@ lspYesNo : dialog {
 	: spacer { width = 1; }
 	: button {
 	  key = "yes";
-	  label = "‚Í‚¢ (Y)";
+	  label = "ã¯ã„ (Y)";
 	  width = 12;
 	  fixed_width = true;
 	  mnemonic = "Y";
@@ -74,7 +74,7 @@ lspYesNo : dialog {
 	}
 	: button {
 	  key = "no";
-	  label = "‚¢‚¢‚¦ (N)";
+	  label = "ã„ã„ãˆ (N)";
 	  width = 12;
 	  fixed_width = true;
 	  mnemonic = "N";
@@ -151,7 +151,7 @@ lspYesNoCancel : dialog {
 	: spacer { width = 1; }
 	: button {
 	  key = "yes";
-	  label = "‚Í‚¢ (Y)";
+	  label = "ã¯ã„ (Y)";
 	  width = 12;
 	  fixed_width = true;
 	  mnemonic = "Y";
@@ -159,14 +159,14 @@ lspYesNoCancel : dialog {
 	}
 	: button {
 	  key = "no";
-	  label = "‚¢‚¢‚¦ (N)";
+	  label = "ã„ã„ãˆ (N)";
 	  width = 12;
 	  fixed_width = true;
 	  mnemonic = "N";
   	}
 	: button {
 	  key = "cancel";
-	  label = "ƒLƒƒƒ“ƒZƒ‹ (C)";
+	  label = "ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)";
 	  width = 12;
 	  fixed_width = true;
 	  mnemonic = "C";
@@ -207,7 +207,7 @@ lspRetryCancel : dialog {
   : row {
 	: spacer { width = 1; }
 	: button {
-	  label = "Äs (R)";
+	  label = "å†è©¦è¡Œ (R)";
 	  key = "retry";
 	  width = 12;
 	  fixed_width = true;
@@ -215,7 +215,7 @@ lspRetryCancel : dialog {
 	  is_default = true;
 	}
 	: button {
-	  label = "ƒLƒƒƒ“ƒZƒ‹ (C)";
+	  label = "ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)";
 	  key = "Cancel";
 	  width = 12;
 	  fixed_width = true;
@@ -255,7 +255,7 @@ lspGetPass : dialog {
     : spacer { width = 1; }
 	}
   : edit_box { 
-    label = "ƒpƒXƒ[ƒh:"; 
+    label = "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰:"; 
     edit_width = 24; 
     key = "password"; 
     password_char = "*"; 
@@ -274,7 +274,7 @@ lspGetPass : dialog {
 	  mnemonic = "O";
 	}
 	: button {
-	  label = "ƒLƒƒƒ“ƒZƒ‹ (C)";
+	  label = "ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)";
 	  key = "cancel";
 	  width = 12;
 	  fixed_width = true;
@@ -328,7 +328,7 @@ lspInputBox : dialog {
 		  is_default = true;
 		}
 		: button {
-		  label = "ƒLƒƒƒ“ƒZƒ‹ (C)";
+		  label = "ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)";
 		  key = "cancel";
 		  width = 3;
 		  mnemonic = "C";
@@ -395,7 +395,7 @@ lspInputBox2 : dialog {
 		  is_default = true;
 	}
 	: button {
-		  label = "ƒLƒƒƒ“ƒZƒ‹ (C)";
+		  label = "ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)";
 		  key = "cancel";
 		  width = 3;
 		  mnemonic = "C";
@@ -439,7 +439,7 @@ lspInputBox3 : dialog {
 		: spacer { width = 1; }
 		: toggle {
 			key = "chk1";
-			label = "ƒJƒEƒ“ƒgƒAƒbƒv‚Å˜A‘±w¦‚·‚é";
+			label = "ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã§é€£ç¶šæŒ‡ç¤ºã™ã‚‹";
 	    }
 		: spacer { width = 1; }
 	  }
@@ -460,7 +460,7 @@ lspInputBox3 : dialog {
 		  is_default = true;
 	}
 	: button {
-		  label = "ƒLƒƒƒ“ƒZƒ‹ (C)";
+		  label = "ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)";
 		  key = "cancel";
 		  width = 3;
 		  mnemonic = "C";
@@ -498,7 +498,7 @@ lspCombobox : dialog {
     : spacer { width = 1; }
     : popup_list{
        key = "poplist";
-       label = "€–Ú";
+       label = "é …ç›®";
        edit_width = 48;
     }
     : spacer { width = 1; }
@@ -514,7 +514,7 @@ lspCombobox : dialog {
 	  mnemonic = "O";
 	}
 	: button {
-	  label = "ƒLƒƒƒ“ƒZƒ‹ (C)";
+	  label = "ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)";
 	  key = "cancel";
 	  width = 12;
 	  fixed_width = true;
@@ -554,7 +554,7 @@ lspListbox : dialog {
     : spacer { width = 1; }
     : list_box{
        key = "listbox";
-       label = "€–Ú";
+       label = "é …ç›®";
        edit_width = 48;
        allow_accept = false;
     }
@@ -572,7 +572,7 @@ lspListbox : dialog {
 	  mnemonic = "O";
 	}
 	: button {
-	  label = "ƒLƒƒƒ“ƒZƒ‹ (C)";
+	  label = "ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)";
 	  key = "cancel";
 	  width = 12;
 	  fixed_width = true;
@@ -612,7 +612,7 @@ lspListboxMulti : dialog {
     : spacer { width = 1; }
     : list_box{
        key = "listbox";
-       label = "€–Ú";
+       label = "é …ç›®";
        edit_width = 80;
        allow_accept = false;
        multiple_select = true;
@@ -631,7 +631,7 @@ lspListboxMulti : dialog {
 	  mnemonic = "O";
 	}
 	: button {
-	  label = "ƒLƒƒƒ“ƒZƒ‹ (C)";
+	  label = "ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)";
 	  key = "cancel";
 	  width = 12;
 	  fixed_width = true;
@@ -651,7 +651,7 @@ lspListboxMulti : dialog {
 }
 
 //////////////////////////////////////////////////////////////////////
-// ã•”ƒƒbƒZ[ƒW–³‚µƒ^ƒCƒv
+// ä¸Šéƒ¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç„¡ã—ã‚¿ã‚¤ãƒ—
 lspListboxMulti0 : dialog {
   key = "main";
   initial_focus = "listbox";
@@ -678,7 +678,7 @@ lspListboxMulti0 : dialog {
 	  mnemonic = "O";
 	}
 	: button {
-	  label = "ƒLƒƒƒ“ƒZƒ‹ (C)";
+	  label = "ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)";
 	  key = "cancel";
 	  width = 12;
 	  fixed_width = true;
@@ -698,11 +698,11 @@ lspListboxMulti0 : dialog {
 }
 
 //////////////////////////////////////////////////////////////////////
-LspEd : dialog {
-  label = "•¶š‚Ì•ÒW";
+lspEd : dialog {
+  label = "æ–‡å­—ã®ç·¨é›†";
   initial_focus = "contents";
   : edit_box {
-    label = "“à—e:";
+    label = "å†…å®¹:";
     key = "contents";
     edit_width = 40;
     edit_limit = 256;
