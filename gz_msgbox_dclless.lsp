@@ -1,16 +1,16 @@
-;;; gz_msgbox Šeí‚ÌƒƒbƒZ[ƒWƒ{ƒbƒNƒXŠÖ” DCL•s—v”Å
-;;; ŠÖ˜Aƒtƒ@ƒCƒ‹F‚È‚µ
-;;; ƒ_ƒCƒAƒƒOƒtƒ@ƒCƒ‹‚ÍAtemp ƒtƒHƒ‹ƒ_‚É¶¬‚·‚éŒ`‚É‚È‚Á‚Ä‚¢‚Ü‚·B
-;;; ƒOƒ[ƒoƒ‹•Ï”F 
-;;;    *ms_msgbox_chk* F gz:lspInputBox3 —p‚Ìƒ`ƒFƒbƒN€–Úƒ‰ƒxƒ‹•¶š—ñ
+;;; gz_msgbox å„ç¨®ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹é–¢æ•° DCLä¸è¦ç‰ˆ
+;;; é–¢é€£ãƒ•ã‚¡ã‚¤ãƒ«ï¼šãªã—
+;;; ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€temp ãƒ•ã‚©ãƒ«ãƒ€ã«ç”Ÿæˆã™ã‚‹å½¢ã«ãªã£ã¦ã„ã¾ã™ã€‚
+;;; ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ï¼š 
+;;;    *ms_msgbox_chk* ï¼š gz:lspInputBox3 ç”¨ã®ãƒã‚§ãƒƒã‚¯é …ç›®ãƒ©ãƒ™ãƒ«æ–‡å­—åˆ—
 
-; ƒo[ƒWƒ‡ƒ“
+; ãƒãƒ¼ã‚¸ãƒ§ãƒ³
 (defun gz_msgbox_ver () (princ "\nGZ_MsgBox --- ver1.6 (MIT License)"))
 
-; ƒOƒ[ƒoƒ‹•Ï”i¶¬ DCLƒtƒ@ƒCƒ‹‚ÌƒpƒXj
-(setq *gz_msgboxdcl* (strcat (getenv "temp") "\\gz_msgbox.dcl"))
+; ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ï¼ˆç”Ÿæˆ DCLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ï¼‰
+(setq *gz_msgboxdcl* (strcat (getenv "temp") "\\gz_msgbox_dclless.dcl"))
 ;;; ------------------------------------------------------------------
-;;; ƒ_ƒCƒAƒƒO‚Ìí—Ş      --- ‘Î‰‚·‚éŠÖ”
+;;; ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ç¨®é¡      --- å¯¾å¿œã™ã‚‹é–¢æ•°
 ;;; ------------------------------------------------------------------
 ;;; [OK]-[Cancel]         --- gz:lspOkCancel
 ;;; [Yes]-[No]            --- gz:lspYesNo
@@ -18,59 +18,59 @@
 ;;; [Yes]-[No]-[Cancel]   --- gz:lspYesNoCancel
 ;;; [OK]-[Cancel]         --- gz:lspRetryCancel
 ;;; 
-;;; –ß‚è’l OK=TAƒLƒƒƒ“ƒZƒ‹=nilANo="F"
+;;; æˆ»ã‚Šå€¤ OK=Tã€ã‚­ãƒ£ãƒ³ã‚»ãƒ«=nilã€No="F"
 ;;; 
 ;;; ------------------------------------------------------------------
-;;; ƒ_ƒCƒAƒƒO‚Ìí—Ş      --- ‘Î‰‚·‚éŠÖ”
+;;; ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ç¨®é¡      --- å¯¾å¿œã™ã‚‹é–¢æ•°
 ;;; ------------------------------------------------------------------
-;;; [ƒpƒXƒ[ƒh“ü—Í]      --- gz:lspGetPass
-;;; [Inputbox]            --- gz:lspInputBox  (ƒ{ƒ^ƒ“‚ª‰¡‚É‚ ‚éƒ^ƒCƒv)
-;;;                       --- gz:lspInputBox2 (ƒ{ƒ^ƒ“‚ª‰º‚É‚ ‚éƒ^ƒCƒv)
-;;;                       --- gz:lspInputBox3 (ƒ{ƒ^ƒ“‚ª‰º+ƒ`ƒFƒbƒN—“‚ªˆê‚Â‚ ‚éƒ^ƒCƒv)
+;;; [ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å…¥åŠ›]      --- gz:lspGetPass
+;;; [Inputbox]            --- gz:lspInputBox  (ãƒœã‚¿ãƒ³ãŒæ¨ªã«ã‚ã‚‹ã‚¿ã‚¤ãƒ—)
+;;;                       --- gz:lspInputBox2 (ãƒœã‚¿ãƒ³ãŒä¸‹ã«ã‚ã‚‹ã‚¿ã‚¤ãƒ—)
+;;;                       --- gz:lspInputBox3 (ãƒœã‚¿ãƒ³ãŒä¸‹+ãƒã‚§ãƒƒã‚¯æ¬„ãŒä¸€ã¤ã‚ã‚‹ã‚¿ã‚¤ãƒ—)
 ;;; [Combobox]            --- gz:lspComboBox
 ;;; [Listbox]             --- gz:lspListBox
-;;; [Listbox]             --- gz:lspListBoxMlti (•¡”‘I‘ğ‰Â)
+;;; [Listbox]             --- gz:lspListBoxMlti (è¤‡æ•°é¸æŠå¯)
 ;;;
-;;; –ß‚è’l OK=•¶š—ñAƒLƒƒƒ“ƒZƒ‹=nil
+;;; æˆ»ã‚Šå€¤ OK=æ–‡å­—åˆ—ã€ã‚­ãƒ£ãƒ³ã‚»ãƒ«=nil
 ;;;
 ;;; ------------------------------------------------------------------
-;;; ƒ_ƒCƒAƒƒO‚Ìí—Ş      --- ‘Î‰‚·‚éŠÖ”
+;;; ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ç¨®é¡      --- å¯¾å¿œã™ã‚‹é–¢æ•°
 ;;; ------------------------------------------------------------------
-;;; [ƒtƒHƒ‹ƒ_‘I‘ğ]        --- gz:lspbrowsefolder
+;;; [ãƒ•ã‚©ãƒ«ãƒ€é¸æŠ]        --- gz:lspbrowsefolder
 ;;;
-;;; –ß‚è’l ƒtƒHƒ‹ƒ_–¼‚Ì•¶š—ñ
+;;; æˆ»ã‚Šå€¤ ãƒ•ã‚©ãƒ«ãƒ€åã®æ–‡å­—åˆ—
 ;;; ------------------------------------------------------------------
-;;; [popup] WSH ‚Ì popup ƒƒ\ƒbƒh‚ğg‚Á‚½MSGƒ{ƒbƒNƒX --- gz:popup
+;;; [popup] WSH ã® popup ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ã£ãŸMSGãƒœãƒƒã‚¯ã‚¹ --- gz:popup
 ;;; 
-;;; –ß‚è’l OK=1,ƒLƒƒƒ“ƒZƒ‹=2, ’†~=3, Äs=4, –³‹=5, 
-;;;        ‚Í‚¢=6, ‚¢‚¢‚¦=7, ÄÀs=10, ‘±s=11
+;;; æˆ»ã‚Šå€¤ OK=1,ã‚­ãƒ£ãƒ³ã‚»ãƒ«=2, ä¸­æ­¢=3, å†è©¦è¡Œ=4, ç„¡è¦–=5, 
+;;;        ã¯ã„=6, ã„ã„ãˆ=7, å†å®Ÿè¡Œ=10, ç¶šè¡Œ=11
 ;;; 
 ;;; ------------------------------------------------------------------
-; ƒ‰ƒCƒZƒ“ƒXiMIT Licensej
+; ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ï¼ˆMIT Licenseï¼‰
 ; Copyright (c) 2021 - Hiroki Sugihara
 ; 
-; ˆÈ‰º‚É’è‚ß‚éğŒ‚É]‚¢A–{ƒ\ƒtƒgƒEƒFƒA‚¨‚æ‚ÑŠÖ˜A•¶‘‚Ìƒtƒ@ƒCƒ‹
-; iˆÈ‰ºuƒ\ƒtƒgƒEƒFƒAvj‚Ì•¡»‚ğæ“¾‚·‚é‚·‚×‚Ä‚Ìl‚É‘Î‚µAƒ\ƒtƒgƒEƒFƒA‚ğ
-; –³§ŒÀ‚Éˆµ‚¤‚±‚Æ‚ğ–³‚Å‹–‰Â‚µ‚Ü‚·B‚±‚ê‚É‚ÍAƒ\ƒtƒgƒEƒFƒA‚Ì•¡»‚ğg—pA•¡ÊA
-; •ÏXAŒ‹‡AŒfÚA”Ğ•zAƒTƒuƒ‰ƒCƒZƒ“ƒXA‚¨‚æ‚Ñ/‚Ü‚½‚Í”Ì”„‚·‚éŒ —˜A‚¨‚æ‚Ñ
-; ƒ\ƒtƒgƒEƒFƒA‚ğ’ñ‹Ÿ‚·‚é‘Šè‚É“¯‚¶‚±‚Æ‚ğ‹–‰Â‚·‚éŒ —˜‚à–³§ŒÀ‚ÉŠÜ‚Ü‚ê‚Ü‚·B
+; ä»¥ä¸‹ã«å®šã‚ã‚‹æ¡ä»¶ã«å¾“ã„ã€æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ãŠã‚ˆã³é–¢é€£æ–‡æ›¸ã®ãƒ•ã‚¡ã‚¤ãƒ«
+; ï¼ˆä»¥ä¸‹ã€Œã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã€ï¼‰ã®è¤‡è£½ã‚’å–å¾—ã™ã‚‹ã™ã¹ã¦ã®äººã«å¯¾ã—ã€ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’
+; ç„¡åˆ¶é™ã«æ‰±ã†ã“ã¨ã‚’ç„¡å„Ÿã§è¨±å¯ã—ã¾ã™ã€‚ã“ã‚Œã«ã¯ã€ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®è¤‡è£½ã‚’ä½¿ç”¨ã€è¤‡å†™ã€
+; å¤‰æ›´ã€çµåˆã€æ²è¼‰ã€é ’å¸ƒã€ã‚µãƒ–ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã€ãŠã‚ˆã³/ã¾ãŸã¯è²©å£²ã™ã‚‹æ¨©åˆ©ã€ãŠã‚ˆã³
+; ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’æä¾›ã™ã‚‹ç›¸æ‰‹ã«åŒã˜ã“ã¨ã‚’è¨±å¯ã™ã‚‹æ¨©åˆ©ã‚‚ç„¡åˆ¶é™ã«å«ã¾ã‚Œã¾ã™ã€‚
 
-; ã‹L‚Ì’˜ìŒ •\¦‚¨‚æ‚Ñ–{‹–‘ø•\¦‚ğAƒ\ƒtƒgƒEƒFƒA‚Ì‚·‚×‚Ä‚Ì•¡»‚Ü‚½‚Íd—v‚È
-; •”•ª‚É‹LÚ‚·‚é‚à‚Ì‚Æ‚µ‚Ü‚·B
+; ä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºãŠã‚ˆã³æœ¬è¨±è«¾è¡¨ç¤ºã‚’ã€ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ã™ã¹ã¦ã®è¤‡è£½ã¾ãŸã¯é‡è¦ãª
+; éƒ¨åˆ†ã«è¨˜è¼‰ã™ã‚‹ã‚‚ã®ã¨ã—ã¾ã™ã€‚
 
-; ƒ\ƒtƒgƒEƒFƒA‚ÍuŒ»ó‚Ì‚Ü‚Üv‚ÅA–¾¦‚Å‚ ‚é‚©ˆÃ–Ù‚Å‚ ‚é‚©‚ğ–â‚í‚¸A‰½‚ç‚Ì
-; •ÛØ‚à‚È‚­’ñ‹Ÿ‚³‚ê‚Ü‚·B‚±‚±‚Å‚¢‚¤•ÛØ‚Æ‚ÍA¤•i«A“Á’è‚Ì–Ú“I‚Ö‚Ì“K‡«A
-; ‚¨‚æ‚ÑŒ —˜”ñNŠQ‚É‚Â‚¢‚Ä‚Ì•ÛØ‚àŠÜ‚İ‚Ü‚·‚ªA‚»‚ê‚ÉŒÀ’è‚³‚ê‚é‚à‚Ì‚Å‚Í‚ ‚è‚Ü‚¹‚ñB 
-; ìÒ‚Ü‚½‚Í’˜ìŒ Ò‚ÍAŒ_–ñsˆ×A•s–@sˆ×A‚Ü‚½‚Í‚»‚êˆÈŠO‚Å‚ ‚ë‚¤‚ÆA
-; ƒ\ƒtƒgƒEƒFƒA‚É‹Nˆö‚Ü‚½‚ÍŠÖ˜A‚µA‚ ‚é‚¢‚Íƒ\ƒtƒgƒEƒFƒA‚Ìg—p‚Ü‚½‚Í‚»‚Ì‘¼‚Ì
-; ˆµ‚¢‚É‚æ‚Á‚Ä¶‚¶‚éˆêØ‚Ì¿‹A‘¹ŠQA‚»‚Ì‘¼‚Ì‹`–±‚É‚Â‚¢‚Ä‰½‚ç‚ÌÓ”C‚à•‰‚í‚È‚¢
-; ‚à‚Ì‚Æ‚µ‚Ü‚·B
+; ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ã€Œç¾çŠ¶ã®ã¾ã¾ã€ã§ã€æ˜ç¤ºã§ã‚ã‚‹ã‹æš—é»™ã§ã‚ã‚‹ã‹ã‚’å•ã‚ãšã€ä½•ã‚‰ã®
+; ä¿è¨¼ã‚‚ãªãæä¾›ã•ã‚Œã¾ã™ã€‚ã“ã“ã§ã„ã†ä¿è¨¼ã¨ã¯ã€å•†å“æ€§ã€ç‰¹å®šã®ç›®çš„ã¸ã®é©åˆæ€§ã€
+; ãŠã‚ˆã³æ¨©åˆ©éä¾µå®³ã«ã¤ã„ã¦ã®ä¿è¨¼ã‚‚å«ã¿ã¾ã™ãŒã€ãã‚Œã«é™å®šã•ã‚Œã‚‹ã‚‚ã®ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ 
+; ä½œè€…ã¾ãŸã¯è‘—ä½œæ¨©è€…ã¯ã€å¥‘ç´„è¡Œç‚ºã€ä¸æ³•è¡Œç‚ºã€ã¾ãŸã¯ãã‚Œä»¥å¤–ã§ã‚ã‚ã†ã¨ã€
+; ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã«èµ·å› ã¾ãŸã¯é–¢é€£ã—ã€ã‚ã‚‹ã„ã¯ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ä½¿ç”¨ã¾ãŸã¯ãã®ä»–ã®
+; æ‰±ã„ã«ã‚ˆã£ã¦ç”Ÿã˜ã‚‹ä¸€åˆ‡ã®è«‹æ±‚ã€æå®³ã€ãã®ä»–ã®ç¾©å‹™ã«ã¤ã„ã¦ä½•ã‚‰ã®è²¬ä»»ã‚‚è² ã‚ãªã„
+; ã‚‚ã®ã¨ã—ã¾ã™ã€‚
 ;;; ------------------------------------------------------------------
 
-(defun msgchk (m /)
-; ƒƒbƒZ[ƒW‚Ì•¶š—ñƒ`ƒFƒbƒN‚ÆƒŠƒXƒg‰»B
-; ’Pƒ‚È•¶š—ñ‚¾‚Á‚½‚çƒŠƒXƒg‰»‚·‚éB
-; •¶š—ñƒŠƒXƒg‚ÍA5ŒÂ‚Ü‚Å‹ó•¶š’Ç‰ÁB
+(defun msgchk (m )
+; ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®æ–‡å­—åˆ—ãƒã‚§ãƒƒã‚¯ã¨ãƒªã‚¹ãƒˆåŒ–ã€‚
+; å˜ç´”ãªæ–‡å­—åˆ—ã ã£ãŸã‚‰ãƒªã‚¹ãƒˆåŒ–ã™ã‚‹ã€‚
+; æ–‡å­—åˆ—ãƒªã‚¹ãƒˆã¯ã€5å€‹ã¾ã§ç©ºæ–‡å­—è¿½åŠ ã€‚
   (if (and (/= 'STR  (type m)) (/= 'LIST (type m)))
     (setq m '("not strings")))
   (if (= 'STR (type m)) (setq m (list m)))
@@ -78,13 +78,13 @@
 m)
 
 (defun gz:LispEd (txt / dcl_id dcl state)
-; ƒVƒ“ƒvƒ‹‚È1s‚Ì•¶š—ñ•ÒWƒ_ƒCƒAƒƒOƒRƒ}ƒ“ƒhiautocad ‚Ì lisped ŠÖ”‘Îˆ—pj
-; “ü—Í‚³‚ê‚½•¶š—ñ‚ğ•Ô‚·
-; ƒƒbƒZ[ƒWƒ‰ƒxƒ‹•t‚«‚ª‚¢‚¢‚È‚ç gz:lspInputBox ‚ğg‚¢‚Ü‚µ‚å‚¤B
+; ã‚·ãƒ³ãƒ—ãƒ«ãª1è¡Œã®æ–‡å­—åˆ—ç·¨é›†ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚³ãƒãƒ³ãƒ‰ï¼ˆautocad ã® lisped é–¢æ•°å¯¾å‡¦ç”¨ï¼‰
+; å…¥åŠ›ã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è¿”ã™
+; ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ©ãƒ™ãƒ«ä»˜ããŒã„ã„ãªã‚‰ gz:lspInputBox ã‚’ä½¿ã„ã¾ã—ã‚‡ã†ã€‚
 ; ex. (gz:LispEd "txt")
-  (gz_msgbox_dclexport) ; DCL ¶¬
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
   (setq dcl_id (load_dialog *gz_msgboxdcl*))
-  (if (not (new_dialog "LspEd" dcl_id)) (exit))
+  (if (not (new_dialog "lspEd" dcl_id)) (exit))
   (set_tile "contents" txt)
   (mode_tile "contents" 2)
   (action_tile "contents" "(setq txt $value)")
@@ -99,12 +99,12 @@ m)
 )
 
 (defun gz:lspOkCancel (title msg1 / result dcl_id)
-; title = ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹•¶š—ñ
-; msg1 = ƒƒbƒZ[ƒW•¶š—ñ‚Ü‚½‚Í•¶š—ñ‚ÌƒŠƒXƒg ("ƒƒbƒZ[ƒW1" "ƒƒbƒZ[ƒW2" "ƒƒbƒZ[ƒW3")
-;        3‚Â–ÚˆÈ~‚Í–³‹‚³‚ê‚é
-; –ß‚è’l : T or nil
-; ex. (gz:lspOkCancel "•¶š—ñ1" "OK-Cancel ƒƒbƒZ[ƒWƒ{ƒbƒNƒX")
-  (gz_msgbox_dclexport) ; DCL ¶¬
+; title = ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«æ–‡å­—åˆ—
+; msg1 = ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸æ–‡å­—åˆ—ã¾ãŸã¯æ–‡å­—åˆ—ã®ãƒªã‚¹ãƒˆ ("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸1" "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸2" "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸3")
+;        3ã¤ç›®ä»¥é™ã¯ç„¡è¦–ã•ã‚Œã‚‹
+; æˆ»ã‚Šå€¤ : T or nil
+; ex. (gz:lspOkCancel "æ–‡å­—åˆ—1" "OK-Cancel ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹")
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
   (setq msg1 (msgchk msg1))
   (setq dcl_id (load_dialog *gz_msgboxdcl*))
   (if (not (new_dialog "lspOkCancel" dcl_id))  (exit))
@@ -119,9 +119,9 @@ m)
 result)
 
 (defun gz:lspYesNo (main msg1 / result dcl_id)
-; (gz:lspYesNo "•¶š—ñ1" "Yes-No ƒƒbƒZ[ƒWƒ{ƒbƒNƒX")
-; –ß‚è’l : T or "F"
-  (gz_msgbox_dclexport) ; DCL ¶¬
+; (gz:lspYesNo "æ–‡å­—åˆ—1" "Yes-No ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹")
+; æˆ»ã‚Šå€¤ : T or "F"
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
   (setq msg1 (msgchk msg1))
   (setq dcl_id (load_dialog *gz_msgboxdcl*))
   (if (not (new_dialog "lspYesNo" dcl_id))  (exit))
@@ -136,9 +136,9 @@ result)
 result)
 
 (defun gz:lspOkOnly (main msg1 / dcl_id)
-; (lspOkOnly "•¶š—ñ1" "OK ‚Ì‚İƒƒbƒZ[ƒWƒ{ƒbƒNƒX")
-; –ß‚è’l : T ‚Ì‚İ
-  (gz_msgbox_dclexport) ; DCL ¶¬
+; (lspOkOnly "æ–‡å­—åˆ—1" "OK ã®ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹")
+; æˆ»ã‚Šå€¤ : T ã®ã¿
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
   (setq msg1 (msgchk msg1))
   (setq dcl_id (load_dialog *gz_msgboxdcl*))
   (if (not (new_dialog "lspOkOnly" dcl_id)) (exit) )
@@ -152,9 +152,9 @@ result)
 T)
 
 (defun gz:lspYesNoCancel (main msg1 / result dcl_id)
-;(gz:lspYesNoCancel "•¶š—ñ1" "Yes-No-Cancel ƒƒbƒZ[ƒWƒ{ƒbƒNƒX")
-; –ß‚è’l : T or nil or  "F"
-  (gz_msgbox_dclexport) ; DCL ¶¬
+;(gz:lspYesNoCancel "æ–‡å­—åˆ—1" "Yes-No-Cancel ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹")
+; æˆ»ã‚Šå€¤ : T or nil or  "F"
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
   (setq msg1 (msgchk msg1))
   (setq dcl_id (load_dialog *gz_msgboxdcl*))
   (if (not (new_dialog "lspYesNoCancel" dcl_id))    (exit)  )
@@ -170,9 +170,9 @@ T)
 result)
 
 (defun gz:lspRetryCancel (main msg1 / result dcl_id)
-; (gz:lspRetryCancel "lspRetryCancel" "lspRetryCancelƒ{ƒbƒNƒX")
-; –ß‚è’l : T or nil
-  (gz_msgbox_dclexport) ; DCL ¶¬
+; (gz:lspRetryCancel "lspRetryCancel" "lspRetryCancelãƒœãƒƒã‚¯ã‚¹")
+; æˆ»ã‚Šå€¤ : T or nil
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
   (setq msg1 (msgchk msg1))
   (setq dcl_id (load_dialog *gz_msgboxdcl*))
   (if (not (new_dialog "lspRetryCancel" dcl_id))    (exit)  )
@@ -187,9 +187,9 @@ result)
 result)
 
 (defun gz:lspGetPass (main msg1 / result dcl_id)
-; (gz:lspGetPass "ƒƒbƒZ[ƒW1" "lspGetPass ƒ{ƒbƒNƒX")
-; –ß‚è’l : ƒpƒXƒ[ƒh‚Ì•¶š—ñ or nil
-  (gz_msgbox_dclexport) ; DCL ¶¬
+; (gz:lspGetPass "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸1" "lspGetPass ãƒœãƒƒã‚¯ã‚¹")
+; æˆ»ã‚Šå€¤ : ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®æ–‡å­—åˆ— or nil
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
   (setq msg1 (msgchk msg1))
   (setq dcl_id (load_dialog *gz_msgboxdcl*))
   (if (not (new_dialog "lspGetPass" dcl_id))    (exit)  )
@@ -205,9 +205,9 @@ result)
 result)
 
 (defun gz:lspInputBox (main msg1 / result dcl_id)
-; ex. (gz:lspInputBox "‚È‚ñ‚©“ü—Í‚µ‚Ä" "ƒCƒ“ƒvƒbƒgƒ{ƒbƒNƒX")
-; –ß‚è’l : ƒeƒLƒXƒgƒ{ƒbƒNƒX‚Ì•¶š—ñ or nil
-  (gz_msgbox_dclexport) ; DCL ¶¬
+; ex. (gz:lspInputBox "ãªã‚“ã‹å…¥åŠ›ã—ã¦" "ã‚¤ãƒ³ãƒ—ãƒƒãƒˆãƒœãƒƒã‚¯ã‚¹")
+; æˆ»ã‚Šå€¤ : ãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã®æ–‡å­—åˆ— or nil
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
   (setq msg1  (msgchk msg1) 
         result "")
   (while (= "" result)
@@ -227,9 +227,9 @@ result)
 result)
 
 (defun gz:lspInputBox2 (main msg1 def / result dcl_id)
-; ex. (gz:lspInputBox2 "‚È‚ñ‚©“ü—Í‚µ‚Ä" "ƒCƒ“ƒvƒbƒgƒ{ƒbƒNƒX" "‰Šú’l")
-; –ß‚è’l : ƒeƒLƒXƒgƒ{ƒbƒNƒX‚Ì•¶š—ñ or nil
-  (gz_msgbox_dclexport) ; DCL ¶¬
+; ex. (gz:lspInputBox2 "ãªã‚“ã‹å…¥åŠ›ã—ã¦" "ã‚¤ãƒ³ãƒ—ãƒƒãƒˆãƒœãƒƒã‚¯ã‚¹" "åˆæœŸå€¤")
+; æˆ»ã‚Šå€¤ : ãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã®æ–‡å­—åˆ— or nil
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
   (setq msg1  (msgchk msg1) 
         result "")
   (while (= "" result)
@@ -250,16 +250,16 @@ result)
 result)
 
 (defun gz:lspInputBox3 (main msg1 def chklabel chk / dcl_id result ret_chk)
-; ˆø” chk
-; ex. (gz:lspInputBox3 "‚È‚ñ‚©“ü—Í‚µ‚Ä" "ƒCƒ“ƒvƒbƒgƒ{ƒbƒNƒX" "‰Šú’l" "ƒ`ƒFƒbƒN" "1")
-; –ß‚è’l : ƒeƒLƒXƒgƒ{ƒbƒNƒX‚Ì•¶š—ñ‚Æƒ`ƒFƒbƒN€–Ú‚ÌON/OFF ‚ÌƒŠƒXƒg or nil
-; -> ("ƒeƒLƒXƒgƒ{ƒbƒNƒX‚Ì•¶š—ñ" "1")
+; å¼•æ•° chk
+; ex. (gz:lspInputBox3 "ãªã‚“ã‹å…¥åŠ›ã—ã¦" "ã‚¤ãƒ³ãƒ—ãƒƒãƒˆãƒœãƒƒã‚¯ã‚¹" "åˆæœŸå€¤" "ãƒã‚§ãƒƒã‚¯" "1")
+; æˆ»ã‚Šå€¤ : ãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã®æ–‡å­—åˆ—ã¨ãƒã‚§ãƒƒã‚¯é …ç›®ã®ON/OFF ã®ãƒªã‚¹ãƒˆ or nil
+; -> ("ãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã®æ–‡å­—åˆ—" "1")
   (setq msg1    (msgchk msg1)
         result  "" 
         ret_chk ""
         *ms_msgbox_chk* chklabel)
-  (gz_msgbox_dclexport) ; DCL ¶¬
-  (if (or (= "1" chk) (= 1 chk)) ; ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Ìˆø”ƒ`ƒFƒbƒN
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
+  (if (or (= "1" chk) (= 1 chk)) ; ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã®å¼•æ•°ãƒã‚§ãƒƒã‚¯
    (setq ret_chk "1")
    (setq ret_chk "0")
   )
@@ -281,7 +281,7 @@ result)
     (unload_dialog dcl_id)
   )
 
-; •Ô‚è’l
+; è¿”ã‚Šå€¤
 (if result 
   (list result ret_chk)
   nil)
@@ -289,9 +289,9 @@ result)
 
 
 (defun gz:lspComboBox (main msg1 lst / result dcl_id)
-; ex. (gz:lspComboBox "xxxx‚È‚ñ‚Å‘I‚ñ‚Å" "ƒRƒ“ƒ{ƒ{ƒbƒNƒX" '("aaa" "AA" "‚ ‚ ‚ " "‚Ÿ‚Ÿ‚Ÿ" "1234567890"))
-; –ß‚è’l : ƒ|ƒbƒvƒAƒbƒvƒŠƒXƒg‚Ì’l or nil
-  (gz_msgbox_dclexport) ; DCL ¶¬
+; ex. (gz:lspComboBox "xxxxãªã‚“ã§é¸ã‚“ã§" "ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹" '("aaa" "AA" "ã‚ã‚ã‚" "ããã" "1234567890"))
+; æˆ»ã‚Šå€¤ : ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒªã‚¹ãƒˆã®å€¤ or nil
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
   (setq msg1  (msgchk msg1) 
         result "")
   (setq dcl_id (load_dialog *gz_msgboxdcl*))
@@ -300,7 +300,7 @@ result)
   (set_tile "message1" (car msg1))
   (set_tile "message2" (cadr msg1))
   (set_tile "message3" (caddr msg1))
-  (start_list "poplist")                   ; ƒ|ƒbƒvƒAƒbƒvƒŠƒXƒg‚Ì’Ç‰Á
+  (start_list "poplist")                   ; ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒªã‚¹ãƒˆã®è¿½åŠ 
     (mapcar 'add_list lst)
   (end_list)
   (set_tile "poplist" "0")
@@ -312,10 +312,10 @@ result)
 result)
 
 (defun gz:lspListBox (main msg1 lst / result dcl_id)
-; ex. (gz:lspListBox "xxxx‚È‚ñ‚©‘I‚ñ‚Å" "ƒŠƒXƒg" '("aaa" "AA" "‚ ‚ ‚ " "‚Ÿ‚Ÿ‚Ÿ" "1234567890"))
-; –ß‚è’l : ‘I‘ğ‚µ‚½ƒŠƒXƒgƒ{ƒbƒNƒXƒCƒ“ƒfƒbƒNƒX’l‚Ì•¶š—ñ or nil    ex. "2"
-; ˆø” msg1 ‚ª "lspListbox0 ‚Ìê‡ "ƒƒbƒZ[ƒW–³‚µƒ^ƒCƒv" ‚Å•\¦
-  (gz_msgbox_dclexport) ; DCL ¶¬
+; ex. (gz:lspListBox "xxxxãªã‚“ã‹é¸ã‚“ã§" "ãƒªã‚¹ãƒˆ" '("aaa" "AA" "ã‚ã‚ã‚" "ããã" "1234567890"))
+; æˆ»ã‚Šå€¤ : é¸æŠã—ãŸãƒªã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã®æ–‡å­—åˆ— or nil    ex. "2"
+; å¼•æ•° msg1 ãŒ "lspListbox0 ã®å ´åˆ "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç„¡ã—ã‚¿ã‚¤ãƒ—" ã§è¡¨ç¤º
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
   (setq dcltype (if msg1 "lspListbox" "lspListbox0"))
   (setq msg1  (msgchk msg1) 
         result "")
@@ -325,7 +325,7 @@ result)
   (set_tile "message1" (car msg1))
   (set_tile "message2" (cadr msg1))
   (set_tile "message3" (caddr msg1))
-  (start_list "listbox")                   ; ƒŠƒXƒg‚Ì’Ç‰Á
+  (start_list "listbox")                   ; ãƒªã‚¹ãƒˆã®è¿½åŠ 
     (mapcar 'add_list lst)
   (end_list)
   (set_tile "listbox" "0")
@@ -338,14 +338,14 @@ result)
 result)
 
 (defun gz:lspListBoxMulti (main msg1 lst / dcltype msg2 result dcl_id)
-; msg1 = nil ‚È‚ç ƒƒbƒZ[ƒW–³‚µƒ^ƒCƒv‚Ìƒ_ƒCƒAƒƒO‚ğ“Ç‚İ‚İ
-; ex. (gz:lspListBoxMulti "‰½ŒÂ‚©‘I‚ñ‚Å‚¥" "ƒŠƒXƒg" '("aaa" "AA" "‚ ‚ ‚ " "‚Ÿ‚Ÿ‚Ÿ" "1234567890"))
-; ex. (gz:lspListBoxMulti "‰½ŒÂ‚©‘I‚ñ‚Å‚¥" nil '("aaa" "AA" "‚ ‚ ‚ " "‚Ÿ‚Ÿ‚Ÿ" "1234567890"))
-; –ß‚è’l : ‘I‘ğ‚µ‚½ƒŠƒXƒgƒ{ƒbƒNƒXƒCƒ“ƒfƒbƒNƒX’l‚Ì•¶š—ñ(ƒXƒy[ƒX‹æØ‚è) or nil
+; msg1 = nil ãªã‚‰ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç„¡ã—ã‚¿ã‚¤ãƒ—ã®ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’èª­ã¿è¾¼ã¿
+; ex. (gz:lspListBoxMulti "ä½•å€‹ã‹é¸ã‚“ã§ã‡" "ãƒªã‚¹ãƒˆ" '("aaa" "AA" "ã‚ã‚ã‚" "ããã" "1234567890"))
+; ex. (gz:lspListBoxMulti "ä½•å€‹ã‹é¸ã‚“ã§ã‡" nil '("aaa" "AA" "ã‚ã‚ã‚" "ããã" "1234567890"))
+; æˆ»ã‚Šå€¤ : é¸æŠã—ãŸãƒªã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã®æ–‡å­—åˆ—(ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Š) or nil
 ; ex. "2 3 6"
 
-  (gz_msgbox_dclexport) ; DCL ¶¬
-  ;"lspListboxMulti0 = ƒƒbƒZ[ƒW–³‚µƒ^ƒCƒv"
+  (gz_msgbox_dclexport) ; DCL ç”Ÿæˆ
+  ;"lspListboxMulti0 = ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç„¡ã—ã‚¿ã‚¤ãƒ—"
   (setq dcltype (if msg1 "lspListboxMulti" "lspListboxMulti0"))
   (setq msg2  (msgchk msg1) 
         result "")
@@ -357,7 +357,7 @@ result)
     (set_tile "message2" (cadr msg2))
     (set_tile "message3" (caddr msg2))
   ))
-  (start_list "listbox")                   ; ƒŠƒXƒg‚Ì’Ç‰Á
+  (start_list "listbox")                   ; ãƒªã‚¹ãƒˆã®è¿½åŠ 
  (mapcar 'add_list lst)
   (end_list)
   (action_tile "listbox" "(setq result $value)")
@@ -366,18 +366,17 @@ result)
   (start_dialog) 
   (unload_dialog dcl_id)
   
-  ; ƒXƒy[ƒX‹æØ‚è‚Ì•¶š—ñ‚ª•Ô‚Á‚Ä‚­‚é‚ªAˆÈ‰º‚ÌŒ`‚ÅƒŠƒXƒg‰»‚Å‚«‚é
+  ; ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã®æ–‡å­—åˆ—ãŒè¿”ã£ã¦ãã‚‹ãŒã€ä»¥ä¸‹ã®å½¢ã§ãƒªã‚¹ãƒˆåŒ–ã§ãã‚‹
   (setq ret_list (read (strcat "(" result ")" )))
-  ; ‘I‘ğ‚³‚ê‚½€–Ú‚¾‚¯‚ÌƒŠƒXƒg‚ğ•Ô‚·
+  ; é¸æŠã•ã‚ŒãŸé …ç›®ã ã‘ã®ãƒªã‚¹ãƒˆã‚’è¿”ã™
   (mapcar '(lambda (x) (nth x lst))  ret_list)
 )
 
 ;;; ------------------------------------------------------------------
 (defun gz:lspbrowsefolder (title folder / shlobj fldobj)
-; ƒtƒHƒ‹ƒ_‘I‘ğƒ_ƒCƒAƒƒO‚ÌŠÖ”
-; –ß‚è’lF‘I‘ğ‚µ‚½ƒtƒHƒ‹ƒ_‚ÌƒpƒX
-; ex. (gz:lspbrowsefolder "››‚ÌƒtƒHƒ‹ƒ_‚ğ‘I‘ğ" nil)
-; 
+; ãƒ•ã‚©ãƒ«ãƒ€é¸æŠãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®é–¢æ•°
+; æˆ»ã‚Šå€¤ï¼šé¸æŠã—ãŸãƒ•ã‚©ãƒ«ãƒ€ã®ãƒ‘ã‚¹
+; ex. (gz:lspbrowsefolder "â—‹â—‹ã®ãƒ•ã‚©ãƒ«ãƒ€ã‚’é¸æŠ" nil)
   (vl-load-com)
   (setq shlobj (vla-getinterfaceobject
                  (vlax-get-acad-object)  "Shell.Application")
@@ -386,7 +385,7 @@ result)
                    'browseforfolder 
                    0 
                    title 
-                   (+ 4 16 64 256 32768) ; ƒtƒHƒ‹ƒ_QÆ‚Ì“®ìƒIƒvƒVƒ‡ƒ“
+                   (+ 4 16 64 256 32768) ; ãƒ•ã‚©ãƒ«ãƒ€å‚ç…§ã®å‹•ä½œã‚ªãƒ—ã‚·ãƒ§ãƒ³
                    folder)
   )
   (vlax-release-object shlobj)
@@ -401,54 +400,54 @@ result)
 
 ;;; ------------------------------------------------------------------
 (defun GZ:popup ( title msg bit / wsh rtn )
-; WSH ‚Ìƒ|ƒbƒvƒAƒbƒvƒƒ\ƒbƒh‚É‚ ‚éƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚Ìƒ‰ƒbƒp[B
-;; title c ƒ^ƒCƒgƒ‹‚Ì•¶š—ñ
-;; msg   c ƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚Ì•¶š—ñ
-;; bit   c [INT] ƒrƒbƒg•„†‰»‚³‚ê‚½ƒAƒCƒRƒ“Eƒ{ƒ^ƒ“‚ÌŠOŠÏ‚ğ¦‚·®”
-;; –ß‚è’lF[INT] ‰Ÿ‚³‚ê‚½ƒ{ƒ^ƒ“‚ğ¦‚·®”
+; WSH ã®ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒ¡ã‚½ãƒƒãƒ‰ã«ã‚ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã®ãƒ©ãƒƒãƒ‘ãƒ¼ã€‚
+;; title â€¦ ã‚¿ã‚¤ãƒˆãƒ«ã®æ–‡å­—åˆ—
+;; msg   â€¦ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã®æ–‡å­—åˆ—
+;; bit   â€¦ [INT] ãƒ“ãƒƒãƒˆç¬¦å·åŒ–ã•ã‚ŒãŸã‚¢ã‚¤ã‚³ãƒ³ãƒ»ãƒœã‚¿ãƒ³ã®å¤–è¦³ã‚’ç¤ºã™æ•´æ•°
+;; æˆ»ã‚Šå€¤ï¼š[INT] æŠ¼ã•ã‚ŒãŸãƒœã‚¿ãƒ³ã‚’ç¤ºã™æ•´æ•°
 
-; ex. (GZ:popup "ƒ^ƒCƒgƒ‹•¶š—ñ" "ƒƒbƒZ[ƒW•¶š—ñB" (+ 2 48 4096))
+; ex. (GZ:popup "ã‚¿ã‚¤ãƒˆãƒ«æ–‡å­—åˆ—" "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸æ–‡å­—åˆ—ã€‚" (+ 2 48 4096))
 ;     -> 1
-;;; 'bit' ‚ÌƒŠƒtƒ@ƒŒƒ“ƒX
-;;; ƒ{ƒ^ƒ“
-;;; ’l  “à—e
-;;; 0  OK ƒ{ƒ^ƒ“•\¦
-;;; 1  OKACancel ƒ{ƒ^ƒ“•\¦
-;;; 2  AbortARetryAIgnore ƒ{ƒ^ƒ“•\¦
-;;; 3  Yes,ANoA Cancel ƒ{ƒ^ƒ“•\¦
-;;; 4  YesANo ƒ{ƒ^ƒ“•\¦
-;;; 5  RetryACancel ƒ{ƒ^ƒ“•\¦
-;;; 6  CancelATry AgainAContinue ƒ{ƒ^ƒ“•\¦
+;;; 'bit' ã®ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹
+;;; ãƒœã‚¿ãƒ³
+;;; å€¤  å†…å®¹
+;;; 0  OK ãƒœã‚¿ãƒ³è¡¨ç¤º
+;;; 1  OKã€Cancel ãƒœã‚¿ãƒ³è¡¨ç¤º
+;;; 2  Abortã€Retryã€Ignore ãƒœã‚¿ãƒ³è¡¨ç¤º
+;;; 3  Yes,ã€Noã€ Cancel ãƒœã‚¿ãƒ³è¡¨ç¤º
+;;; 4  Yesã€No ãƒœã‚¿ãƒ³è¡¨ç¤º
+;;; 5  Retryã€Cancel ãƒœã‚¿ãƒ³è¡¨ç¤º
+;;; 6  Cancelã€Try Againã€Continue ãƒœã‚¿ãƒ³è¡¨ç¤º
 ;;;
-;;; ƒAƒCƒRƒ“
-;;; ’l “à—e
-;;; 16  Stop ƒAƒCƒRƒ“•\¦
-;;; 32  Question ƒAƒCƒRƒ“•\¦
-;;; 48  Exclamation ƒAƒCƒRƒ“•\¦
-;;; 64  Information ƒAƒCƒRƒ“•\¦
+;;; ã‚¢ã‚¤ã‚³ãƒ³
+;;; å€¤ å†…å®¹
+;;; 16  Stop ã‚¢ã‚¤ã‚³ãƒ³è¡¨ç¤º
+;;; 32  Question ã‚¢ã‚¤ã‚³ãƒ³è¡¨ç¤º
+;;; 48  Exclamation ã‚¢ã‚¤ã‚³ãƒ³è¡¨ç¤º
+;;; 64  Information ã‚¢ã‚¤ã‚³ãƒ³è¡¨ç¤º
 ;;;
-;;; ‚»‚Ì‘¼
-;;; ’l  “à—e
-;;; 256  ‘æ2ƒ{ƒ^ƒ“‚ğƒfƒtƒHƒ‹ƒg‚ÉB
-;;; 512  ‘æ3ƒ{ƒ^ƒ“‚ğƒfƒtƒHƒ‹ƒg‚ÉB
-;;; 4096  ƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚ÍAƒVƒXƒeƒ€ƒ‚[ƒ_ƒ‹ƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚Å‚ ‚èAˆê”Ôã‚ÌƒEƒBƒ“ƒhƒE‚É•\¦‚³‚ê‚Ü‚·B
-;;; 524288  ƒeƒLƒXƒg‚ğ‰EŠñ‚¹‚Å•\¦
-;;; 1048576  ƒeƒLƒXƒg‚ª‰E—¬‚ê‚Å•\¦
+;;; ãã®ä»–
+;;; å€¤  å†…å®¹
+;;; 256  ç¬¬2ãƒœã‚¿ãƒ³ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã«ã€‚
+;;; 512  ç¬¬3ãƒœã‚¿ãƒ³ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã«ã€‚
+;;; 4096  ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã¯ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ¢ãƒ¼ãƒ€ãƒ«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã§ã‚ã‚Šã€ä¸€ç•ªä¸Šã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚
+;;; 524288  ãƒ†ã‚­ã‚¹ãƒˆã‚’å³å¯„ã›ã§è¡¨ç¤º
+;;; 1048576  ãƒ†ã‚­ã‚¹ãƒˆãŒå³æµã‚Œã§è¡¨ç¤º
 ;;; 
-;;; –ß‚è’l
-;;; ŠÖ˜A‚·‚éƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚ÄƒƒbƒZ[ƒWƒ{ƒbƒNƒX‚ğ•Â‚¶‚é‚Æ‚«‚É®”’l‚ª•Ô‚³‚ê‚éB
-;;; ’l  “à—eDescription
-;;; 1  OK ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½B
-;;; 2  CanceliƒLƒƒƒ“ƒZƒ‹j ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½B
-;;; 3  Aborti’†~j ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½B
-;;; 4  RetryiÄsj ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½B
-;;; 5  Ignore(–³‹) ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½B
-;;; 6  Yes ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½B
-;;; 7  No ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½B
-;;; 10  Try AgainiÄÀsj ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½B
-;;; 11  Continuei‘±sj ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½B
+;;; æˆ»ã‚Šå€¤
+;;; é–¢é€£ã™ã‚‹ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ã‚’é–‰ã˜ã‚‹ã¨ãã«æ•´æ•°å€¤ãŒè¿”ã•ã‚Œã‚‹ã€‚
+;;; å€¤  å†…å®¹Description
+;;; 1  OK ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã€‚
+;;; 2  Cancelï¼ˆã‚­ãƒ£ãƒ³ã‚»ãƒ«ï¼‰ ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã€‚
+;;; 3  Abortï¼ˆä¸­æ­¢ï¼‰ ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã€‚
+;;; 4  Retryï¼ˆå†è©¦è¡Œï¼‰ ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã€‚
+;;; 5  Ignore(ç„¡è¦–) ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã€‚
+;;; 6  Yes ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã€‚
+;;; 7  No ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã€‚
+;;; 10  Try Againï¼ˆå†å®Ÿè¡Œï¼‰ ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã€‚
+;;; 11  Continueï¼ˆç¶šè¡Œï¼‰ ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã€‚
 ;;;
-;;; ƒƒ‚ : IJCAD ‚¾‚ÆŒÄ‚Ño‚µ‚ª³í‚Å‚Í‚È‚¢‚Ì‚©ƒAƒCƒRƒ“‚È‚µ OKƒ{ƒ^ƒ“‚Ì‚İ‚Ì“®ì‚É‚È‚éB2013`2022
+;;; ãƒ¡ãƒ¢ : IJCAD ã ã¨å‘¼ã³å‡ºã—ãŒæ­£å¸¸ã§ã¯ãªã„ã®ã‹ã‚¢ã‚¤ã‚³ãƒ³ãªã— OKãƒœã‚¿ãƒ³ã®ã¿ã®å‹•ä½œã«ãªã‚‹ã€‚2013ï½2020
   (if (setq wsh (vlax-create-object "wscript.shell"))
     (progn
       (setq rtn (vl-catch-all-apply 'vlax-invoke-method (list wsh 'popup msg 0 title bit)))
@@ -457,12 +456,16 @@ result)
 )))
 
 
-;;; DCL ¶¬ŠÖ” -----------------------------------------------------
-(defun gz_msgbox_dclexport (/)
+;;; DCL ç”Ÿæˆé–¢æ•° -----------------------------------------------------
+(defun gz_msgbox_dclexport ()
+; temp ãƒ•ã‚©ãƒ«ãƒ€ã« gz_msgbox.dcl ã‚’ç”Ÿæˆã™ã‚‹ã€‚
+; å¤‰æ›´ã™ã‚‹å ´åˆã¯ã€*gz_msgboxdcl* ã®ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ã¨åˆã‚ã›ã¦å¤‰æ›´
+
+  ; ãƒ•ã‚¡ã‚¤ãƒ«ãŒãªã„ã¾ãŸã¯ã€å¤‰æ›´ã®å¿…è¦ãŒã‚ã‚‹ã¨ãã«ç”Ÿæˆ
   (if (or *ms_msgbox_chk*
-          (not (findfile (strcat (getenv "temp") "\\gz_msgbox.dcl"))) )
+          (not (findfile *gz_msgboxdcl*)) )
     (progn 
-      (setq f (open (strcat (getenv "temp") "\\gz_msgbox.dcl") "w")) 
+      (setq f (open *gz_msgboxdcl* "w")) 
       (mapcar '(lambda (x) (write-line x f)) (gz_msgbox_dclcontents)) 
       (close f) 
     )
@@ -470,10 +473,10 @@ result)
 )
 
 (defun gz_msgbox_dclcontents ()
-; gz_msgbox ‚Åg—p‚³‚ê‚é DCLƒtƒ@ƒCƒ‹‚Ì“à—e‚ğ•¶š—ñƒŠƒXƒg‚Å•Ô‚·ŠÖ”
+; gz_msgbox ã§ä½¿ç”¨ã•ã‚Œã‚‹ DCLãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’æ–‡å­—åˆ—ãƒªã‚¹ãƒˆã§è¿”ã™é–¢æ•°
 (if (not *ms_msgbox_chk*) (setq *ms_msgbox_chk* "check"))
 (list 
-  "dcl_settings : default_dcl_settings { audit_level = 3; }"
+  "dcl_settings : default_dcl_settings { audit_level = 3; }" ; ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ç›£æŸ»ã‚’æœ‰åŠ¹ã«
   (strcat
     "lspOkCancel : dialog {key = \"main\"; initial_focus = \"cancel\";"
     ": column { : text {key = \"message1\"; width = 20;}: text {key = \"message2\"; width = 20;} : text {key = \"message3\"; width = 20;}}"
@@ -481,7 +484,7 @@ result)
     ": row {: spacer { width = 1;}"
     ": button {key = \"accept\"; label = \"OK\"; width = 12; fixed_width = true; mnemonic = \"O\"; is_default = true;}"
     ": spacer {width = 1;}"
-    ": button {label = \"ƒLƒƒƒ“ƒZƒ‹ (C)\"; key = \"cancel\"; width = 12; fixed_width = true;  mnemonic = \"C\";  is_cancel = true;}"
+    ": button {label = \"ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)\"; key = \"cancel\"; width = 12; fixed_width = true;  mnemonic = \"C\";  is_cancel = true;}"
     ": spacer {width = 1;} }}"
   )
   (strcat
@@ -490,8 +493,8 @@ result)
     ": text {key = \"message1\"; width = 50;}: text {key = \"message2\"; width = 50;}: text {key = \"message3\"; width = 50;}"
     "}"
     ": row {: spacer { width = 1; }"
-    ": button { key = \"yes\"; label = \"‚Í‚¢ (Y)\"; width = 12; fixed_width = true; mnemonic = \"Y\";  is_default = true;}"
-    ": button {  key = \"no\"; label = \"‚¢‚¢‚¦ (N)\"; width = 12; fixed_width = true; mnemonic = \"N\"; is_cancel = true;}"
+    ": button { key = \"yes\"; label = \"ã¯ã„ (Y)\"; width = 12; fixed_width = true; mnemonic = \"Y\";  is_default = true;}"
+    ": button {  key = \"no\"; label = \"ã„ã„ãˆ (N)\"; width = 12; fixed_width = true; mnemonic = \"N\"; is_cancel = true;}"
     ": spacer { width = 1;} }}"
   )
   (strcat
@@ -507,9 +510,9 @@ result)
     "lspYesNoCancel : dialog {key = \"main\"; initial_focus = \"cancel\";"
     ": column {: text {key = \"message1\";  width = 20;} : text {key = \"message2\";  width = 20;}: text {key = \"message3\";  width = 20;}}"
     ": row {: spacer { width = 1; }"
-    ": button {key = \"yes\"; label = \"‚Í‚¢ (Y)\"; width = 12; fixed_width = true;  mnemonic = \"Y\";  is_default = true;}"
-    ": button {key = \"no\"; label = \"‚¢‚¢‚¦ (N)\"; width = 12;  fixed_width = true;  mnemonic = \"N\";}"
-    ": button {key = \"cancel\"; label = \"ƒLƒƒƒ“ƒZƒ‹ (C)\"; width = 12; fixed_width = true; mnemonic = \"C\"; is_cancel = true;}"
+    ": button {key = \"yes\"; label = \"ã¯ã„ (Y)\"; width = 12; fixed_width = true;  mnemonic = \"Y\";  is_default = true;}"
+    ": button {key = \"no\"; label = \"ã„ã„ãˆ (N)\"; width = 12;  fixed_width = true;  mnemonic = \"N\";}"
+    ": button {key = \"cancel\"; label = \"ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)\"; width = 12; fixed_width = true; mnemonic = \"C\"; is_cancel = true;}"
     ": spacer {width = 1;}"
     "}"
     ": column {: text {key = \"bug_avoidance\"; width = 60;}}"
@@ -519,8 +522,8 @@ result)
     "lspRetryCancel : dialog {key = \"main\"; initial_focus = \"retry\";"
     ": column {: text {key = \"message1\";  width = 20; }: text {key = \"message2\";  width = 20; }: text {key = \"message3\";  width = 20;}}"
     ": row {: spacer { width = 1; }"
-    ": button {label = \"Äs (R)\";  key = \"retry\";  width = 12;  fixed_width = true;  mnemonic = \"R\"; is_default = true;}"
-    ": button {label = \"ƒLƒƒƒ“ƒZƒ‹ (C)\";  key = \"Cancel\";  width = 12;  fixed_width = true;  mnemonic = \"C\"; is_cancel = true;}"
+    ": button {label = \"å†è©¦è¡Œ (R)\";  key = \"retry\";  width = 12;  fixed_width = true;  mnemonic = \"R\"; is_default = true;}"
+    ": button {label = \"ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)\";  key = \"Cancel\";  width = 12;  fixed_width = true;  mnemonic = \"C\"; is_cancel = true;}"
     ": spacer { width = 1;}"
     "}"
     ": column {: text {key = \"bug_avoidance\"; width = 60;}}"
@@ -531,11 +534,11 @@ result)
     ": column {: spacer {width = 1; }"
     ": text {key = \"message1\"; width = 20;} : text {key = \"message2\"; width = 20;} : text {key = \"message3\"; width = 20;}"
     ": spacer { width = 1; }}"
-    ": edit_box {label = \"ƒpƒXƒ[ƒh:\"; edit_width = 24; key = \"password\"; password_char = \"*\"; is_default = true; allow_accept = true;}"
+    ": edit_box {label = \"ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰:\"; edit_width = 24; key = \"password\"; password_char = \"*\"; is_default = true; allow_accept = true;}"
     ": spacer { width = 1; }"
     ": row {: spacer {width = 1;}"
     ": button {key = \"accept\"; label = \"OK\"; width = 12; fixed_width = true;  mnemonic = \"O\";}"
-    ": button {key = \"cancel\"; label = \"ƒLƒƒƒ“ƒZƒ‹ (C)\"; width = 12; fixed_width = true;  mnemonic = \"C\"; is_cancel = true;}"
+    ": button {key = \"cancel\"; label = \"ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)\"; width = 12; fixed_width = true;  mnemonic = \"C\"; is_cancel = true;}"
     ": spacer {width = 1;}}"
     ": column {: text {key = \"bug_avoidance\"; width = 60;}}"
     "}"
@@ -548,7 +551,7 @@ result)
     ": spacer { width = 1; }}"
     ": column {"
     ": button {key = \"accept\"; label = \"OK\"; width = 3; mnemonic = \"O\"; is_default = true;}"
-    ": button {key = \"cancel\"; label = \"ƒLƒƒƒ“ƒZƒ‹ (C)\"; width = 3; mnemonic = \"C\"; is_cancel = true;}"
+    ": button {key = \"cancel\"; label = \"ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)\"; width = 3; mnemonic = \"C\"; is_cancel = true;}"
     ": spacer { width = 1; }}"
     "}"
     ": edit_box { edit_width = 60; label = \" \"; key = \"textbox\"; allow_accept = true;}"
@@ -564,7 +567,7 @@ result)
     ": edit_box {edit_width = 60;  label = \" \"; key = \"textbox\"; allow_accept = true;}"
     ": row {"
     ": button {key = \"accept\"; label = \"OK\"; width = 3; mnemonic = \"O\"; is_default = true;}"
-    ": button {key = \"cancel\"; label = \"ƒLƒƒƒ“ƒZƒ‹ (C)\"; width = 3; mnemonic = \"C\"; is_cancel = true;}"
+    ": button {key = \"cancel\"; label = \"ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)\"; width = 3; mnemonic = \"C\"; is_cancel = true;}"
     "}"
     ": column {: text {key = \"bug_avoidance\"; width = 66;}}"
     "}"
@@ -576,44 +579,29 @@ result)
     ": text {key = \"message1\"; width = 20;} : text {key = \"message2\"; width = 20;} : text {key = \"message3\"; width = 20;}  : text {key = \"message4\"; width = 20;}"
     ": spacer { width = 1; }"
     ": toggle { key = \"chk1\";"
-    "label =\""  *ms_msgbox_chk*  "\";"
+    "label =\""  *ms_msgbox_chk*  "\";"   ; ãƒ©ãƒ™ãƒ«åã®å¤‰æ›´
     "}"
     ": spacer { width = 1; }}}"
     ": spacer { width = 1; }"
     ": edit_box {edit_width = 60;   label = \" \";  key = \"textbox\";  allow_accept = true;  }"
     ": row {"
     ": button {key = \"accept\"; label = \"OK\"; width = 3; mnemonic = \"O\";  is_default = true; }"
-    ": button {key = \"cancel\"; label = \"ƒLƒƒƒ“ƒZƒ‹ (C)\"; width = 3; mnemonic = \"C\"; is_cancel = true; }"
+    ": button {key = \"cancel\"; label = \"ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)\"; width = 3; mnemonic = \"C\"; is_cancel = true; }"
     "}"
     ": column {: text {key = \"bug_avoidance\"; width = 66;}}"
     "}"
-  )
-  (strcat
-    "LspEd : dialog {key = \"contents\"; label = \"•¶š‚Ì•ÒW\"; initial_focus = \"contents\";"
-    ": edit_box {label = \"“à—e:\"; edit_width = 40;  edit_limit = 256; allow_accept = true; }"
-    "spacer;"
-    ": column {"
-    ": row {fixed_width = true; alignment = centered;"
-    "ok_button;"
-    ": spacer { width = 2; }"
-    "cancel_button;"
-    ": spacer { width = 2; }"
-    "}"
-    "}"
-    ": column {: text {key = \"bug_avoidance\"; width = 60;}}"
-    "}
   )
   (strcat
     "lspCombobox : dialog {key = \"main\";  initial_focus = \"poplist\";"
     ": column {: spacer { width = 1; }"
     ": text {key = \"message1\"; width = 20;} : text { key = \"message2\"; width = 20;} : text { key = \"message3\"; width = 20;}"
     ": spacer {width = 1;}"
-    ": popup_list{key = \"poplist\"; label = \"€–Ú\"; edit_width = 48;}: spacer { width = 1; }}"
+    ": popup_list{key = \"poplist\"; label = \"é …ç›®\"; edit_width = 48;}: spacer { width = 1; }}"
     ": spacer {width = 1;}"
     ": row {"
     ": spacer {width = 1;}"
     ": button {key = \"accept\"; label = \"OK\";   width = 12;   fixed_width = true;   mnemonic = \"O\";}"
-    ": button {key = \"cancel\"; label = \"ƒLƒƒƒ“ƒZƒ‹ (C)\"; width = 12; fixed_width = true; mnemonic = \"C\"; is_cancel = true;}"
+    ": button {key = \"cancel\"; label = \"ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)\"; width = 12; fixed_width = true; mnemonic = \"C\"; is_cancel = true;}"
     ": spacer {width = 1;}"
     "}"
     ": column {: text {key = \"bug_avoidance\"; width = 60;}}"
@@ -624,12 +612,12 @@ result)
     ": column {: spacer {width = 1;}"
     ": text {key = \"message1\"; width = 20;} : text { key = \"message2\"; width = 20;} : text {key = \"message3\"; width = 20;}"
     ": spacer {width = 1;}"
-    ": list_box{key = \"listbox\"; label = \"€–Ú\"; edit_width = 48; allow_accept = false; }"
+    ": list_box{key = \"listbox\"; label = \"é …ç›®\"; edit_width = 48; allow_accept = false; }"
     ": spacer {width = 1;}}"
     ": spacer {width = 1;}"
     ": row {: spacer { width = 1; }"
     ": button {key = \"accept\"; label = \"OK\"; width = 12; fixed_width = true; mnemonic = \"O\";}"
-    ": button {key = \"cancel\"; label = \"ƒLƒƒƒ“ƒZƒ‹ (C)\"; width = 12; fixed_width = true; mnemonic = \"C\"; is_cancel = true; }"
+    ": button {key = \"cancel\"; label = \"ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)\"; width = 12; fixed_width = true; mnemonic = \"C\"; is_cancel = true; }"
     ": spacer {width = 1;}}"
     ": column {: text {key = \"bug_avoidance\"; width = 60;}}"
     "}"
@@ -639,12 +627,12 @@ result)
     ": column {: spacer { width = 1; }"
     ": text {key = \"message1\"; width = 20;} : text {key = \"message2\"; width = 20;} : text {key = \"message3\";   width = 20;}"
     ": spacer {width = 1;}"
-    ": list_box{ key = \"listbox\"; label = \"€–Ú\";  edit_width = 80; allow_accept = false; multiple_select = true;}"
+    ": list_box{ key = \"listbox\"; label = \"é …ç›®\";  edit_width = 80; allow_accept = false; multiple_select = true;}"
     ": spacer {width = 1;}}"
     ": spacer {width = 1;}"
     ": row {: spacer {width = 1;}"
     ": button {key = \"accept\"; label = \"OK\";   width = 12;   fixed_width = true;   mnemonic = \"O\";}"
-    ": button {key = \"cancel\"; label = \"ƒLƒƒƒ“ƒZƒ‹ (C)\"; width = 12; fixed_width = true; mnemonic = \"C\"; is_cancel = true;}"
+    ": button {key = \"cancel\"; label = \"ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)\"; width = 12; fixed_width = true; mnemonic = \"C\"; is_cancel = true;}"
     ": spacer {width = 1;}}"
     ": column {: text {key = \"bug_avoidance\"; width = 60;}}"
     "}"
@@ -658,15 +646,15 @@ result)
        ": spacer {width = 1;}"
        ": row {: spacer { width = 1; }"
        ": button {key = \"accept\"; label = \"OK\"; width = 12; fixed_width = true; mnemonic = \"O\"; }"
-       ": button {label = \"ƒLƒƒƒ“ƒZƒ‹ (C)\"; key = \"cancel\";  width = 12;  fixed_width = true; mnemonic = \"C\"; is_cancel = true;}"
+       ": button {label = \"ã‚­ãƒ£ãƒ³ã‚»ãƒ« (C)\"; key = \"cancel\";  width = 12;  fixed_width = true; mnemonic = \"C\"; is_cancel = true;}"
        ": spacer { width = 1;}"
        "}"
        ": column {: text {key = \"bug_avoidance\"; width = 60;}}"
        "}"
   )
   (strcat 
-        "LspEd : dialog {label = \"•¶š‚Ì•ÒW\"; initial_focus = \"contents\";"
-        ": edit_box {label = \"“à—e:\"; key = \"contents\"; edit_width = 40; edit_limit = 256; allow_accept = true;}"
+        "lspEd : dialog {label = \"æ–‡å­—ã®ç·¨é›†\"; initial_focus = \"contents\";"
+        ": edit_box {label = \"å†…å®¹:\"; key = \"contents\"; edit_width = 40; edit_limit = 256; allow_accept = true;}"
         "spacer;"
         ": column {: row {fixed_width = true; alignment = centered; ok_button; : spacer {width = 2;} cancel_button; : spacer {width = 2;}}}"
         ": column {: text { key = \"bug_avoidance\"; width = 50; }}"
@@ -678,52 +666,52 @@ result)
 
 ;;; ------------------------------------------------------------------
 (defun gz_msgbox_test (/ result)
-  ; gz_msgbox ŠÖ˜AŠÖ”‚ÌƒeƒXƒg Às¨Œ‹‰Ê•\¦‚ğˆê’Ê‚ès‚¤
-  (setq msg1 '("ƒƒbƒZ[ƒW1" "ƒƒbƒZ[ƒW2" "ƒƒbƒZ[ƒW3")
-        lst1 '("aaa" "AA" "‚ ‚ ‚ " "‚Ÿ‚Ÿ‚Ÿ" "1234567890"))
+  ; gz_msgbox é–¢é€£é–¢æ•°ã®ãƒ†ã‚¹ãƒˆ å®Ÿè¡Œâ†’çµæœè¡¨ç¤ºã‚’ä¸€é€šã‚Šè¡Œã†
+  (setq msg1 '("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸1" "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸2" "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸3")
+        lst1 '("aaa" "AA" "ã‚ã‚ã‚" "ããã" "1234567890"))
 
-  (setq result (gz:lspOkCancel "OK-Cancel ƒƒbƒZ[ƒWƒ{ƒbƒNƒX" msg1))
-  (alert (if (= T result) "OK" "ƒLƒƒƒ“ƒZƒ‹"))
-  (setq result (gz:lspYesNo "Yes-No ƒƒbƒZ[ƒWƒ{ƒbƒNƒX" msg1 ))
+  (setq result (gz:lspOkCancel "OK-Cancel ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹" msg1))
+  (alert (if (= T result) "OK" "ã‚­ãƒ£ãƒ³ã‚»ãƒ«"))
+  (setq result (gz:lspYesNo "Yes-No ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹" msg1 ))
   (alert (if (= T result) "Yes" "No"))
-  (setq result (gz:lspokonly "OK Only ƒƒbƒZ[ƒWƒ{ƒbƒNƒX" msg1 ))
-  (alert (if (= T result) "OK" "ƒGƒ‰["))
-  (setq result (gz:lspRetryCancel "Retry-Cancel ƒƒbƒZ[ƒWƒ{ƒbƒNƒX" msg1 ))
-  (alert (if (= T result) "ƒŠƒgƒ‰ƒC" "ƒLƒƒƒ“ƒZƒ‹"))
-  (setq result (gz:lspGetPass  "GetPass ƒƒbƒZ[ƒWƒ{ƒbƒNƒX" msg1 ))
-  (alert (strcat "ƒpƒXƒ[ƒh‚Í" result))
-  (setq result (gz:lisped "ƒVƒ“ƒvƒ‹•¶š“ü—Í" ))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" result))
-  (setq result (gz:lspInputBox "ƒCƒ“ƒvƒbƒgƒ{ƒbƒNƒX" msg1 ))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" result))
-  (setq result (gz:lspInputBox2 "ƒCƒ“ƒvƒbƒgƒ{ƒbƒNƒX" msg1 "‰Šú’l"))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" result))
-  (setq result (gz:lspInputBox3 "‚È‚ñ‚©“ü—Í‚µ‚Ä" "ƒCƒ“ƒvƒbƒgƒ{ƒbƒNƒX" "‰Šú’l" "„‚Íƒƒ{ƒbƒg‚Å‚Í‚ ‚è‚Ü‚¹‚ñ" "0"))
-  (if (= nil result) (prompt "\nƒLƒƒƒ“ƒZƒ‹") (progn (apply 'strcat result)))
-  (setq result (gz:lspComboBox "ƒRƒ“ƒ{ƒ{ƒbƒNƒX" msg1 lst1))
-  (alert (if (= nil result) '("ƒLƒƒƒ“ƒZƒ‹") result))
-  (setq result (gz:lspListBox "ƒŠƒXƒgƒ{ƒbƒNƒX" msg1 lst1))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" result))
-  (setq result (gz:lspListBoxMulti "•¡”‘I‘ğƒŠƒXƒgƒ{ƒbƒNƒX" msg1 lst1))
-  (if (= nil result) (prompt "\nƒLƒƒƒ“ƒZƒ‹") (progn (apply 'strcat result)))
-  (setq result (gz:lspListBoxMulti "•¡”‘I‘ğƒŠƒXƒgƒ{ƒbƒNƒX" nil lst1))
-  (if (= nil result) (prompt "\nƒLƒƒƒ“ƒZƒ‹") (progn (apply 'strcat result)))
-  (setq result (gz:lspbrowsefolder "››‚ÌƒtƒHƒ‹ƒ_‚ğ‘I‘ğ" nil))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" result))
-  (setq result (GZ:popup "ƒ|ƒbƒvƒAƒbƒvƒƒbƒZ[ƒW" "OK ƒ{ƒ^ƒ“" (+ 0 16 4096)))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" (itoa result)))
-  (setq result (GZ:popup "ƒ|ƒbƒvƒAƒbƒvƒƒbƒZ[ƒW" "OKAƒLƒƒƒZƒ‹ ƒ{ƒ^ƒ“" (+ 1 32 4096)))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" (itoa result)))
-  (setq result (GZ:popup "ƒ|ƒbƒvƒAƒbƒvƒƒbƒZ[ƒW" "’†~AÄÀsA–³‹ ƒ{ƒ^ƒ“" (+ 2 48 4096)))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" (itoa result)))
-  (setq result (GZ:popup "ƒ|ƒbƒvƒAƒbƒvƒƒbƒZ[ƒW" "‚Í‚¢A‚¢‚¢‚¦AƒLƒƒƒ“ƒZƒ‹ ƒ{ƒ^ƒ“" (+ 3 64 4096)))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" (itoa result)))
-  (setq result (GZ:popup "ƒ|ƒbƒvƒAƒbƒvƒƒbƒZ[ƒW" "‚Í‚¢A‚¢‚¢‚¦ ƒ{ƒ^ƒ“" (+ 4 48 4096)))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" (itoa result)))
-  (setq result (GZ:popup "ƒ|ƒbƒvƒAƒbƒvƒƒbƒZ[ƒW" "Äs ƒLƒƒƒ“ƒZƒ‹ ƒ{ƒ^ƒ“" (+ 5 48 4096)))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" (itoa result)))
-  (setq result (GZ:popup "ƒ|ƒbƒvƒAƒbƒvƒƒbƒZ[ƒW" "ƒLƒƒƒ“ƒZƒ‹AÄÀs ‘±s ƒ{ƒ^ƒ“" (+ 6 48 4096)))
-  (alert (if (= nil result) "ƒLƒƒƒ“ƒZƒ‹" (itoa result)))
+  (setq result (gz:lspokonly "OK Only ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹" msg1 ))
+  (alert (if (= T result) "OK" "ã‚¨ãƒ©ãƒ¼"))
+  (setq result (gz:lspRetryCancel "Retry-Cancel ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹" msg1 ))
+  (alert (if (= T result) "ãƒªãƒˆãƒ©ã‚¤" "ã‚­ãƒ£ãƒ³ã‚»ãƒ«"))
+  (setq result (gz:lspGetPass  "GetPass ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹" msg1 ))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" (strcat "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯" result)))
+  (setq result (gz:lisped "ã‚·ãƒ³ãƒ—ãƒ«æ–‡å­—å…¥åŠ›" ))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" result))
+  (setq result (gz:lspInputBox "ã‚¤ãƒ³ãƒ—ãƒƒãƒˆãƒœãƒƒã‚¯ã‚¹" msg1 ))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" result))
+  (setq result (gz:lspInputBox2 "ã‚¤ãƒ³ãƒ—ãƒƒãƒˆãƒœãƒƒã‚¯ã‚¹" msg1 "åˆæœŸå€¤"))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" result))
+  (setq result (gz:lspInputBox3 "ãªã‚“ã‹å…¥åŠ›ã—ã¦" "ã‚¤ãƒ³ãƒ—ãƒƒãƒˆãƒœãƒƒã‚¯ã‚¹" "åˆæœŸå€¤" "ç§ã¯ãƒ­ãƒœãƒƒãƒˆã§ã¯ã‚ã‚Šã¾ã›ã‚“" "0"))
+  (if (= nil result) (prompt "\nã‚­ãƒ£ãƒ³ã‚»ãƒ«") (progn (apply 'strcat result)))
+  (setq result (gz:lspComboBox "ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹" msg1 lst1))
+  (alert (if (= nil result) '("ã‚­ãƒ£ãƒ³ã‚»ãƒ«") result))
+  (setq result (gz:lspListBox "ãƒªã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹" msg1 lst1))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" result))
+  (setq result (gz:lspListBoxMulti "è¤‡æ•°é¸æŠãƒªã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹" msg1 lst1))
+  (if (= nil result) (prompt "\nã‚­ãƒ£ãƒ³ã‚»ãƒ«") (progn (apply 'strcat result)))
+  (setq result (gz:lspListBoxMulti "è¤‡æ•°é¸æŠãƒªã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹" nil lst1))
+  (if (= nil result) (prompt "\nã‚­ãƒ£ãƒ³ã‚»ãƒ«") (progn (apply 'strcat result)))
+  (setq result (gz:lspbrowsefolder "â—‹â—‹ã®ãƒ•ã‚©ãƒ«ãƒ€ã‚’é¸æŠ" nil))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" result))
+  (setq result (GZ:popup "ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" "OK ãƒœã‚¿ãƒ³" (+ 0 16 4096)))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" (itoa result)))
+  (setq result (GZ:popup "ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" "OKã€ã‚­ãƒ£ã‚»ãƒ« ãƒœã‚¿ãƒ³" (+ 1 32 4096)))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" (itoa result)))
+  (setq result (GZ:popup "ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" "ä¸­æ­¢ã€å†å®Ÿè¡Œã€ç„¡è¦– ãƒœã‚¿ãƒ³" (+ 2 48 4096)))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" (itoa result)))
+  (setq result (GZ:popup "ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" "ã¯ã„ã€ã„ã„ãˆã€ã‚­ãƒ£ãƒ³ã‚»ãƒ« ãƒœã‚¿ãƒ³" (+ 3 64 4096)))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" (itoa result)))
+  (setq result (GZ:popup "ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" "ã¯ã„ã€ã„ã„ãˆ ãƒœã‚¿ãƒ³" (+ 4 48 4096)))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" (itoa result)))
+  (setq result (GZ:popup "ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" "å†è©¦è¡Œ ã‚­ãƒ£ãƒ³ã‚»ãƒ« ãƒœã‚¿ãƒ³" (+ 5 48 4096)))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" (itoa result)))
+  (setq result (GZ:popup "ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸" "ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã€å†å®Ÿè¡Œ ç¶šè¡Œ ãƒœã‚¿ãƒ³" (+ 6 48 4096)))
+  (alert (if (= nil result) "ã‚­ãƒ£ãƒ³ã‚»ãƒ«" (itoa result)))
   (princ)
 )
 
